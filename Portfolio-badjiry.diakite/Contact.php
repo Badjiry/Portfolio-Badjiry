@@ -28,44 +28,69 @@
     </div>
 </nav>
 
-<main class="bg-black flex flex-col items-center min-h-[130vh] justify-center h-screen text-gray-300">
+<main class="bg-black flex flex-col items-center min-h-[100vh] justify-center h-screen text-gray-300">
        
-        <h2 class="text-4xl font-extrabold text-sky-500 text-center mb-6">
+        <h2 class="text-4xl font-extrabold text-sky-500 text-center mb-8">
             Vous souhaitez échanger ou collaborer ?
         </h2>
        
-    <section id="contact" class="w-full max-w-4xl px-6 py-8 bg-gray-800 rounded-lg shadow-lg">
-        <h2 class="text-3xl text-sky-500 font-semibold text-center mb-6">Contactez-moi</h2>
 
-        <div class="space-y-8">
-       
-            <div class="flex justify-between items-center p-4 bg-gray-700 font-bold rounded-lg shadow-md hover:shadow-xl transition">
-                <div class="flex items-center">
-                    <i class="fas fa-user text-sky-500 text-2xl mr-4"></i>
-                    <p class="text-gray-300 font-semibold">Nom :</p>
-                </div>
-                <p class="text-gray-400">Badjiry Diakité</p>
-            </div>
 
-          
-            <div class="flex justify-between items-center p-4 bg-gray-700 font-bold rounded-lg shadow-md hover:shadow-xl transition">
-                <div class="flex items-center">
-                    <i class="fas fa-envelope text-sky-500 text-2xl mr-4"></i>
-                    <p class="text-gray-300 font-semibold">Email:</p>
-                </div>
-                <p class="text-gray-400">DIAKITEBADJIRYPRO@GMAIL.COM</p>
-            </div>
+<form method="POST" action="" class="space-y-8 w-80 h-50">
 
-           
-            <div class="flex justify-between items-center p-4 bg-gray-700 font-bold rounded-lg shadow-md hover:shadow-xl transition">
-                <div class="flex items-center">
-                    <i class="fas fa-phone text-sky-500 text-2xl mr-4"></i>
-                    <p class="text-gray-300 font-semibold">Téléphone :</p>
-                </div>
-                <p class="text-gray-400">+33 6 98 07 73 79</p>
-            </div>
+<?php
+    $success = null;
 
-    </section>
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $to = "diakitebadjirypro@gmail.com";
+        $subject = "Nouveau message depuis le Portfolio";
+
+        $name = htmlspecialchars($_POST["name"]);
+        $email = htmlspecialchars($_POST["email"]);
+        $message = htmlspecialchars($_POST["message"]);
+
+        $headers = "From: $email\r\n";
+        $headers .= "Reply-To: $email\r\n";
+        $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
+
+        $body = "Nom: $name\nEmail: $email\n\nMessage:\n$message";
+
+        if (mail($to, $subject, $body, $headers)) {
+            $success = true;
+        } else {
+            $success = false;
+        }
+    }
+  ?>
+    <div>
+        <label for="name" class="block text-left text-sm text-gray-300 font-medium">Nom</label>
+        <input type="text" name="name" id="name" required class="mt-1 w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+    </div>
+
+    <div>
+        <label for="email" class="block text-left text-sm text-gray-300 font-medium">Email</label>
+        <input type="email" name="email" id="email" required class="mt-1 w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+    </div>
+
+    <div>
+        <label for="message" class="block text-left text-sm text-gray-300 font-medium">Message</label>
+        <textarea name="message" id="message" rows="4" required class="mt-1 w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+    </div>
+
+    <button type="submit" class="w-full bg-sky-500 text-white font-semibold py-2 rounded-md hover:bg-sky-600 transition">
+        Envoyer
+    </button>
+
+    <?php if ($success !== null): ?>
+        <p class="mt-4 text-sm font-bold text-center <?= $success ? 'text-green-400' : 'text-red-400' ?>">
+            <?= $success ? 'Message envoyé avec succès ! 🎉' : 'Échec de l’envoi du message. ❌' ?>
+        </p>
+    <?php endif; ?>
+
+</form>
+
+
+
 
     
     <div class="flex space-x-6 mt-8">
@@ -76,10 +101,6 @@
             <i class="fab fa-github"></i>
         </a>
     </div>
-
-
-
-    
 
         <div class="flex left 1/2 items-center text-white italic font-bold rounded-lg shadow-lg mt-11 mb-4">
         Portfolio by Badjiry Diakité
