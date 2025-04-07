@@ -31,13 +31,14 @@
 <main class="bg-black flex flex-col items-center min-h-[130vh] justify-center h-screen text-gray-300">
 
 <section id="projects" class="py-20 px-10 bg-gray-900 text-center mt-2">
-    <h2 class="text-4xl font-extrabold text-sky-500 mb-10 uppercase tracking-wide opacity-0 translate-y-5 transition-all duration-700 ease-out">
-        Mes Projets
-    </h2>
+<h2 class="text-4xl font-extrabold text-sky-500 mb-10 uppercase tracking-wide opacity-0 translate-y-5 transition-all duration-700 ease-out text-center">
+    Mes Projets
+</h2>
+
 
   
     <div class="overflow-x-auto scrollbar-hide">
-        <div class="flex space-x-8 px-5 md:justify-center">
+        <div class="flex justify-center gap-8 px-5">
             <!-- Projet 1 -->
             <div class="relative min-h-[270px] md:min-w-[350px] bg-gray-800 p-6 rounded-xl shadow-lg 
                         hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
@@ -58,25 +59,184 @@
                 </a>
             </div>
 
-            <!-- Projet 2 -->
-            <div class="relative min-h-[270px] md:min-w-[360px] bg-gray-800 p-6 rounded-xl shadow-lg 
-                        hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
-                        duration-700 ease-out delay-300 hover:scale-105 hover:shadow-sky-500">
-                
             
-                <div class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60" 
-                     style="background-image: url('Assets/Puissance4logo.jpg');">
-                </div>
 
-                <h3 class="text-2xl font-semibold text-white relative">Puissance-4</h3>
-                <p class="text-gray-400 mt-3 font-bold relative">Création du légendaire Puissance 4.</p>
-                <a href="https://github.com/Badjiry/Puissance4-badjiry.diakite" 
-                   class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
-                          hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
-                    Voir le code sur GitHub
-                    <i class="fab fa-github text-xl"></i>
-                </a>
-            </div>
+<!-- Projet 2 -->
+<div class="relative min-h-[270px] md:min-w-[360px] bg-gray-800 p-6 rounded-xl shadow-lg 
+            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
+            duration-700 ease-out delay-300 hover:scale-105 hover:shadow-sky-500">
+
+    <!-- Image de fond -->
+    <div class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60" 
+         style="background-image: url('Assets/Puissance4logo.jpg');"></div>
+
+   
+    <h3 class="text-2xl font-semibold text-white relative">Puissance-4</h3>
+    <p class="text-gray-400 mt-3 font-bold relative">Création du légendaire Puissance 4 avec JavaScript.</p>
+    <a href="https://github.com/Badjiry/Puissance4-badjiry.diakite" 
+       class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
+              hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
+        Voir le code sur GitHub
+        <i class="fab fa-github text-xl"></i>
+    </a>
+
+    <!-- Jeu intégré -->
+    <div class="relative z-10 mt-6 text-center">
+       
+        <div class="flex justify-center gap-10 mb-3 text-white text-sm font-bold">
+            <div>🔴 Joueur 1: <span id="scoreR">0</span></div>
+            <div>🟡 Joueur 2: <span id="scoreY">0</span></div>
+        </div>
+
+      
+        <div class="buttons flex justify-center gap-1 mb-3"></div>
+        <div id="table" class="flex flex-col items-center gap-1"></div>
+
+      
+        <button onclick="setup(6,7)" class="mt-4 bg-white text-gray-800 font-bold px-4 py-1 rounded hover:bg-sky-200 text-sm">
+            🔁 Rejouer
+        </button>
+    </div>
+</div>
+
+
+
+<style>
+    .row {
+        display: flex;
+        gap: 4px;
+    }
+    .case, .jeton {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+    }
+    .jeton.R {
+        background-color: red;
+    }
+    .jeton.Y {
+        background-color: yellow;
+    }
+    .buttons .jeton {
+        cursor: pointer;
+        opacity: 0.9;
+        transition: transform 0.2s ease;
+    }
+    .buttons .jeton:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+<!-- Script -->
+<script>
+    let Table;
+    let TableGUI, buttonsDiv;
+    let currPlayer = "R";
+    let scores = { R: 0, Y: 0 };
+
+    function setup(rows, columns) {
+        TableGUI = document.querySelector("#table");
+        buttonsDiv = document.querySelector(".buttons");
+        Table = Array.from({ length: rows }, () => Array(columns).fill(0));
+        TableGUI.innerHTML = "";
+        buttonsDiv.innerHTML = "";
+
+        for (let i = 0; i < columns; i++) {
+            buttonsDiv.innerHTML += `<div class='jeton ${currPlayer}' data-col='${i}'></div>`;
+        }
+
+        for (let r = 0; r < rows; r++) {
+            let rowDiv = document.createElement("div");
+            rowDiv.classList.add("row");
+            for (let c = 0; c < columns; c++) {
+                let cell = document.createElement("div");
+                cell.classList.add("case");
+                rowDiv.appendChild(cell);
+            }
+            TableGUI.appendChild(rowDiv);
+        }
+
+        document.querySelectorAll(".buttons .jeton").forEach(button => {
+            button.addEventListener("click", () => {
+                let col = parseInt(button.dataset.col);
+                placeCoin(currPlayer, col);
+                if (checkWinner()) {
+                    setTimeout(() => {
+                        alert(`🎉 Le joueur ${currPlayer === 'R' ? '1 (🔴)' : '2 (🟡)'} gagne !`);
+                        scores[currPlayer]++;
+                        updateScore();
+                        setup(6, 7);
+                    }, 100);
+                } else if (isBoardFull()) {
+                    setTimeout(() => {
+                        alert("Match nul !");
+                        setup(6, 7);
+                    }, 100);
+                } else {
+                    nextPlayer();
+                }
+            });
+        });
+        updateScore();
+    }
+
+    function updateScore() {
+        document.getElementById("scoreR").textContent = scores.R;
+        document.getElementById("scoreY").textContent = scores.Y;
+    }
+
+    function nextPlayer() {
+        currPlayer = currPlayer === "R" ? "Y" : "R";
+        document.querySelectorAll(".buttons .jeton").forEach(btn => {
+            btn.classList.remove("R", "Y");
+            btn.classList.add(currPlayer);
+        });
+    }
+
+    function placeCoin(coin, column) {
+        for (let i = Table.length - 1; i >= 0; i--) {
+            if (Table[i][column] === 0) {
+                Table[i][column] = coin;
+                let cell = TableGUI.querySelectorAll(".row")[i].children[column];
+                cell.classList.remove("case");
+                cell.classList.add("jeton", coin);
+                return;
+            }
+        }
+    }
+
+    function checkWinner() {
+        const directions = [[0, 1], [1, 0], [1, 1], [-1, 1]];
+        for (let r = 0; r < Table.length; r++) {
+            for (let c = 0; c < Table[0].length; c++) {
+                let player = Table[r][c];
+                if (player === 0) continue;
+                for (let [dr, dc] of directions) {
+                    let count = 1;
+                    for (let i = 1; i < 4; i++) {
+                        let nr = r + dr * i, nc = c + dc * i;
+                        if (nr >= 0 && nr < Table.length && nc >= 0 && nc < Table[0].length && Table[nr][nc] === player) {
+                            count++;
+                        } else break;
+                    }
+                    if (count === 4) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function isBoardFull() {
+        return Table.flat().every(cell => cell !== 0);
+    }
+
+
+    window.onload = () => setup(6, 7);
+</script>
+
+
+
 
              <!-- Projet 3 -->
             <div class="relative min-h-[270px] md:min-w-[350px] bg-gray-800 p-6 rounded-xl shadow-lg 
