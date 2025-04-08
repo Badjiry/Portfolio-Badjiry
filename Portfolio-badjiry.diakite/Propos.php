@@ -12,19 +12,57 @@
 
 <body class="font-serif bg-gray-900">
 
-<nav id="nav" class="bg-gray-900 sticky top-0 z-10 backdrop-filter backdrop-blur-sm bg-opacity-50">
-    <div class="max-w-5xl mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-        <p class="text-2xl text-sky-400 font-semibold">Badjiry Diakité</p>
-        <div class="flex space-x-4 text-gray-900">
-            <a href="index.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Présentation</a>
-            <a href="Propos.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">À Propos</a>
-            <a href="Projets.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Projets</a>
-            <a href="Contact.php" class="text-gray-300  font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Contact</a>
-        </div>
-        </div>
+<!-- Navbar -->
+<nav class="bg-gray-900 sticky top-0 z-10 backdrop-filter backdrop-blur-sm bg-opacity-50">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <p class="text-2xl text-sky-400 font-semibold">Badjiry Diakité</p>
+
+      <!-- Hamburger button -->
+      <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex space-x-4">
+        <a href="index.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Présentation</a>
+        <a href="Propos.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">À Propos</a>
+        <a href="Projets.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Projets</a>
+        <a href="Contact.php" class="text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Contact</a>
+      </div>
     </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-2">
+      <a href="index.php" class="block text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Présentation</a>
+      <a href="Propos.php" class="block text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">À Propos</a>
+      <a href="Projets.php" class="block text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Projets</a>
+      <a href="Contact.php" class="block text-gray-300 font-bold hover:bg-sky-500 hover:text-white px-3 py-2 rounded">Contact</a>
+    </div>
+  </div>
 </nav>
+
+<!-- JS Script -->
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Optionnel : Fermer le menu quand on clique sur un lien
+  const links = mobileMenu.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
 
 <main class="bg-black flex flex-col items-center justify-start  min-h-[150vh] text-gray-300 px-4 space-y-12">
     <h1 class="text-4xl italic font-bold text-sky-400 mb-6 p-4 border-4 border-sky-500 rounded-lg shadow-lg mt-4 text-center">
@@ -126,7 +164,7 @@
 </div>
 
 
-    <div class="text-white font-bold italic rounded-lg shadow-lg mt-5 mb-4 ml-1 text-center">
+    <div class=" text-white font-bold italic rounded-lg shadow-lg mt-5 mb-4 ml-1 text-center">
         Portfolio by Badjiry Diakité
     </div>
 </main>
