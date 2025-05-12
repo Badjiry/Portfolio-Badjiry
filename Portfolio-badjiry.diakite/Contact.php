@@ -121,7 +121,7 @@
 
     <?php if ($success !== null): ?>
         <p class="mt-4 text-sm font-bold text-center <?= $success ? 'text-green-400' : 'text-red-400' ?>">
-            <?= $success ? 'Message envoyé avec succès ! 🎉' : 'Échec de l’envoi du message. ❌' ?>
+            <?= $success ? 'Message envoyé avec succès !' : 'Échec de l’envoi du message. ❌' ?>
         </p>
     <?php endif; ?>
 
