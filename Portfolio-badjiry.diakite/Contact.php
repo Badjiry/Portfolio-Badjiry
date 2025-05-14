@@ -66,7 +66,7 @@
   });
 </script>
 
-<main class="bg-black flex flex-col items-center min-h-[100vh] justify-center h-screen text-gray-300">
+<main class="bg-black flex flex-col items-center min-h-[120vh] justify-center h-screen text-gray-300">
        
         <h2 class="text-4xl font-extrabold text-sky-500 text-center mb-8">
             Vous souhaitez échanger ou collaborer ?

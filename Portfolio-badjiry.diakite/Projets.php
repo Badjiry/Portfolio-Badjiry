@@ -46,32 +46,29 @@
     <main class="bg-black flex flex-col items-center justify-center min-h-screen text-gray-300">
         <section id="projects" class="py-20 px-4 bg-gray-900 text-center mt-2 w-full">
             <h2
-                class="text-4xl font-extrabold text-sky-500 mb-10 uppercase tracking-wide opacity-0 translate-y-5 transition-all duration-700 ease-out will-change-transform">
+                class="text-4xl font-extrabold text-sky-500 mb-10 uppercase tracking-wide">
                 Mes Projets
             </h2>
-            <div class="flex justify-center gap-8 gap-y-8 px-2 flex-wrap max-w-7xl mx-auto">
-                <div
-                    class="relative w-full max-w-[400px] bg-gray-800 p-6 rounded-xl shadow-lg 
-                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
-                            duration-700 ease-out delay-200 hover:scale-105 hover:shadow-sky-500 will-change-transform">
-                    <div
-                        class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
+            <div class="flex justify-center flex-wrap gap-8 max-w-7xl mx-auto">
+                <div class="w-full max-w-sm bg-gray-800 p-6 rounded-xl shadow-lg
+                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95
+                            duration-700 ease-out hover:scale-105 hover:shadow-sky-500">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
                         style="background-image: url('Assets/Black_Illustration_Ninja_Esport_Or_Gaming_Mascot_Logo_-3-removebg-preview.png');">
                     </div>
                     <h3 class="text-2xl font-semibold text-white relative">Nxggachain - Clone de Twitter</h3>
                     <p class="text-gray-400 mt-3 font-bold relative">Reproduire les fonctionnalités de Twitter.</p>
                     <a href="https://github.com/Badjiry/CloneTwitter-Badjiry"
-                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
+                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full
                                     hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
                         Voir le code sur GitHub
                         <i class="fab fa-github text-xl"></i>
                     </a>
                 </div>
 
-                <div
-                    class="relative w-full max-w-[400px] bg-gray-800 p-6 rounded-xl shadow-lg 
-                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
-                            duration-700 ease-out delay-300 hover:scale-105 hover:shadow-sky-500 will-change-transform">
+                <div class="w-full max-w-sm bg-gray-800 p-6 rounded-xl shadow-lg
+                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95
+                            duration-700 ease-out hover:scale-105 hover:shadow-sky-500">
                     <div
                         class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
                         style="background-image: url('Assets/Puissance4logo.jpg');">
@@ -79,17 +76,16 @@
                     <h3 class="text-2xl font-semibold text-white relative">Puissance-4</h3>
                     <p class="text-gray-400 mt-3 font-bold relative">Jeu Puissance 4 en JavaScript.</p>
                     <a href="https://github.com/Badjiry/Puissance4-badjiry.diakite"
-                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
+                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full
                                     hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
                         Voir le code sur GitHub
                         <i class="fab fa-github text-xl"></i>
                     </a>
                 </div>
 
-                <div
-                    class="relative w-full max-w-[400px] bg-gray-800 p-6 rounded-xl shadow-lg 
-                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
-                            duration-700 ease-out delay-400 hover:scale-105 hover:shadow-sky-500 will-change-transform">
+                <div class="w-full max-w-sm bg-gray-800 p-6 rounded-xl shadow-lg
+                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95
+                            duration-700 ease-out hover:scale-105 hover:shadow-sky-500">
                     <div
                         class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
                         style="background-image: url('Assets/quizzlégendaire.jpg');">
@@ -97,16 +93,16 @@
                     <h3 class="text-2xl font-semibold text-white relative">Quizz-Légendaire</h3>
                     <p class="text-gray-400 mt-3 font-bold relative">Quizz à temps limité.</p>
                     <a href="https://github.com/Badjiry/Quizz-badjiry.diakite"
-                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
+                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full
                                     hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
                         Voir le code sur GitHub
                         <i class="fab fa-github text-xl"></i>
                     </a>
                 </div>
 
-                <div class="relative w-full max-w-[400px] bg-gray-800 p-6 rounded-xl shadow-lg 
-                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95 opacity-0 translate-y-5 
-                            duration-700 ease-out delay-400 hover:scale-105 hover:shadow-sky-500 will-change-transform">
+                <div class="w-full max-w-sm bg-gray-800 p-6 rounded-xl shadow-lg
+                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95
+                            duration-700 ease-out hover:scale-105 hover:shadow-sky-500">
                     <div
                         class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
                         style="background-image: url('Assets/morpionimage.jpg');">
@@ -114,7 +110,24 @@
                     <h3 class="text-2xl font-semibold text-white relative">Morpion Alpha</h3>
                     <p class="text-gray-400 mt-3 font-bold relative">le morpion qui te donne le goût de la victoire.</p>
                     <a href="https://github.com/Badjiry/Morpion"
-                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full 
+                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full
+                                    hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
+                        Voir le code sur GitHub
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+
+                <div class="w-full max-w-sm bg-gray-800 p-6 rounded-xl shadow-lg
+                            hover:shadow-2xl transition transform hover:-translate-y-2 scale-95
+                            duration-700 ease-out hover:scale-105 hover:shadow-sky-500">
+                    <div
+                        class="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl transition-opacity duration-500 hover:opacity-60"
+                        style="background-image: url('Assets/ballon.jpg');">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white relative">Projet Laravel</h3>
+                    <p class="text-gray-400 mt-3 font-bold relative">Site web de ventes de maillot de Football</p>
+                    <a href="https://github.com/EpitechWebAcademiePromo2026/W-PHP-502-PAR-2-1-FreeAds-badjiry.diakite"
+                        class="mt-5 inline-block px-5 py-2 bg-sky-500 text-white font-semibold rounded-full
                                     hover:bg-sky-600 transition duration-300 relative transform hover:scale-110">
                         Voir le code sur GitHub
                         <i class="fab fa-github text-xl"></i>
@@ -126,26 +139,17 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const appearElements = document.querySelectorAll(".opacity-0");
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove("opacity-0", "translate-y-5");
-                        entry.target.classList.add("opacity-100", "translate-y-0", "transition-opacity",
-                            "transition-transform", "duration-500");
-                    }
-                });
-            }, {
-                threshold: 0.1,
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-
-            appearElements.forEach(el => observer.observe(el));
         });
     </script>
-    <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center text-white italic font-bold rounded-lg shadow-lg mt-5 mb-3">
+    <footer class="py-4 text-center text-white italic font-bold rounded-lg shadow-lg mt-8">
         Portfolio by Badjiry Diakité
-    </div>
+    </footer>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
